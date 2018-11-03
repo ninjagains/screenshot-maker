@@ -5,7 +5,14 @@ const glob = require('glob');
 const meow = require('meow');
 
 const cli = meow(`
-  Usage: node index.js
+  Usage:
+    $ make-screenshots
+
+  Options
+    --scale (default: 1)
+    --font-size The font size (default: 80)
+    --width Final width of the screenshot (default: 1242) 
+    --height Final height of the screenshot (default: 2208) 
 `);
 
 const phoneScale = parseFloat(cli.flags.scale) || 1;
