@@ -2,7 +2,7 @@
   "name": "screenshot-maker",
   "version": "0.0.1",
   "bin": {
-    "make-screenshots": "./index.js"
+    "screenshot-maker": "./cli.js"
   },
   "dependencies": {
     "canvas": "^2.0.0-alpha.13",
