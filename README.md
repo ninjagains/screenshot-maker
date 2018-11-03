@@ -14,10 +14,11 @@ npx make-screenshots
 2. Run `make-screenshots` in the same directory
 3. The script will find all the `*_framed.png` files that [fastlane](https://fastlane.tools/) created and spice them up a bit.
 
-The text that appears in the image is currently the same as the file name (this will likely change in the future as it limits what you can write)
+|                                          `fastlane frameit`                                          |                                         `make-screenshots`                                          |
+| :--------------------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------------------: |
+| ![](https://github.com/ninjagains/screenshot-maker/blob/master/examples/Add%20new%20sets_framed.png) | ![](https://github.com/ninjagains/screenshot-maker/blob/master/examples/Add%20new%20sets_final.png) |
 
-<img width="300" src="https://github.com/ninjagains/screenshot-maker/blob/master/examples/Add%20new%20sets_framed.png">
-<img width="300" src="https://github.com/ninjagains/screenshot-maker/blob/master/examples/Add%20new%20sets_final.png">
+The text that appears in the image is currently the same as the file name (this will likely change in the future as it limits what you can write a lot)
 
 ## Options
 
