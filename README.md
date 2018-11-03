@@ -18,7 +18,7 @@ npx make-screenshots
 | :--------------------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------------------: |
 | ![](https://github.com/ninjagains/screenshot-maker/blob/master/examples/Add%20new%20sets_framed.png) | ![](https://github.com/ninjagains/screenshot-maker/blob/master/examples/Add%20new%20sets_final.png) |
 
-The text that appears in the image is currently the same as the file name (this will likely change in the future as it limits what you can write a lot)
+The text that appears in the image is currently the same as the file name (this will likely change in the future as it limits what you can write a lot). Also it is not really configurable in terms of backgrounds and text colors, but that may be implemented going forward.
 
 ## Options
 
