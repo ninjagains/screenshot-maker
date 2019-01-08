@@ -7,18 +7,22 @@ const meow = require('meow');
 const cli = meow(`
   Usage:
     $ make-screenshots
-
+ß
   Options
     --scale (default: 1)
     --font-size The font size (default: 80)
     --width Final width of the screenshot (default: 1242) 
     --height Final height of the screenshot (default: 2208) 
+    --rotate Phone rotation in radians (float value) (default: 0.03)
+    --line-height Text line height in pixels (default: 80)
 `);
 
 const phoneScale = parseFloat(cli.flags.scale) || 1;
 const fontSize = parseInt(cli.flags.fontSize) || 80;
 const width = parseInt(cli.flags.width) || 1242;
 const height = parseInt(cli.flags.height) || 2208;
+const rotate = parseFloat(cli.flags.rotate) || 0.03;
+const lineHeight = parseInt(cli.flags.lineHeight) || 80;
 
 async function createImageFromFastlaneFrame(frameFile) {
   const match = frameFile.match(/(.+)_framed.png$/);
@@ -47,7 +51,7 @@ async function createImageFromFastlaneFrame(frameFile) {
     ctx.font = `bold ${fontSize}px Open Sans`;
     ctx.fillStyle = 'black';
     ctx.textAlign = 'center';
-    fillText(ctx, caption, width / 2, 240, maxWidth);
+    fillText(ctx, caption, width / 2, 240, maxWidth, lineHeight);
     ctx.restore();
   }
 
@@ -58,7 +62,7 @@ async function createImageFromFastlaneFrame(frameFile) {
 
   ctx.save();
   ctx.translate(width / 2, height / 2);
-  ctx.rotate(0.03);
+  ctx.rotate(rotate);
   ctx.translate(-width / 2, -height / 2);
   ctx.drawImage(
     image,
