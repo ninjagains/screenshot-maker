@@ -11,7 +11,7 @@ npx screenshot-maker
 ## Usage
 
 1. Run `fastlane frameit` inside a directory of screenshots. This will produce a bunch of image files `*_framed.png`
-2. Run `make-screenshots` in the same directory
+2. Run `screenshot-maker` in the same directory
 3. The script will find all the `*_framed.png` files that [fastlane](https://fastlane.tools/) created and spice them up a bit.
 
 |                                          `fastlane frameit`                                          |                                         `screenshot-maker`                                          |
@@ -22,7 +22,7 @@ The text that appears in the image is currently the same as the file name (this 
 
 ## Options
 
-```bash
+```
 Usage:
   $ screenshot-maker
 
