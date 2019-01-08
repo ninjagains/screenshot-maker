@@ -6,8 +6,8 @@ const meow = require('meow');
 
 const cli = meow(`
   Usage:
-    $ make-screenshots
-ß
+    $ screenshot-maker
+
   Options
     --scale (default: 1)
     --font-size The font size (default: 80)
@@ -15,6 +15,9 @@ const cli = meow(`
     --height Final height of the screenshot (default: 2208) 
     --rotate Phone rotation in radians (float value) (default: 0.03)
     --line-height Text line height in pixels (default: 80)
+    --font-family Font Family (default: Open Sans)
+    --background-color Solid color or gradient (default: #fff...#ddd)
+    --text-color Caption text color (default: #222)
 `);
 
 const phoneScale = parseFloat(cli.flags.scale) || 1;
@@ -23,6 +26,9 @@ const width = parseInt(cli.flags.width) || 1242;
 const height = parseInt(cli.flags.height) || 2208;
 const rotate = parseFloat(cli.flags.rotate) || 0.03;
 const lineHeight = parseInt(cli.flags.lineHeight) || 80;
+const fontFamily = cli.flags.fontFamily || 'Open Sans';
+const textColor = cli.flags.textColor || '#222';
+const backgroundColor = cli.flags.backgroundColor || '#fff...#ddd';
 
 async function createImageFromFastlaneFrame(frameFile) {
   const match = frameFile.match(/(.+)_framed.png$/);
@@ -36,20 +42,25 @@ async function createImageFromFastlaneFrame(frameFile) {
   const canvas = createCanvas(width, height);
   const ctx = canvas.getContext('2d');
 
-  ctx.fillStyle = makeGradient();
+  ctx.fillStyle = makeGradient(parseGradientString(backgroundColor));
   ctx.fillRect(0, 0, width, height);
 
-  function makeGradient(from = '#fff', to = '#ddd') {
+  function parseGradientString(gradientString) {
+    return gradientString.split('...');
+  }
+
+  function makeGradient(stops) {
     const gradient = ctx.createLinearGradient(0, 0, 0, height);
-    gradient.addColorStop(0, from);
-    gradient.addColorStop(1, to);
+    for (let i = 0; i < stops.length; i++) {
+      gradient.addColorStop(i / Math.max(1, stops.length - 1), stops[i]);
+    }
     return gradient;
   }
 
   function drawCaption(ctx, caption, maxWidth) {
     ctx.save();
-    ctx.font = `bold ${fontSize}px Open Sans`;
-    ctx.fillStyle = 'black';
+    ctx.font = `bold ${fontSize}px ${fontFamily}`;
+    ctx.fillStyle = textColor;
     ctx.textAlign = 'center';
     fillText(ctx, caption, width / 2, 240, maxWidth, lineHeight);
     ctx.restore();
