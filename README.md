@@ -18,19 +18,24 @@ npx screenshot-maker
 | :--------------------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------------------: |
 | ![](https://github.com/ninjagains/screenshot-maker/blob/master/examples/Add%20new%20sets_framed.png) | ![](https://github.com/ninjagains/screenshot-maker/blob/master/examples/Add%20new%20sets_final.png) |
 
-The text that appears in the image is currently the same as the file name (this will likely change in the future as it limits what you can write a lot). Also it is not really configurable in terms of backgrounds and text colors, but that may be implemented going forward.
+The text that appears in the image is currently the same as the file name (this will likely change in the future as it limits what you can write a lot).
 
 ## Options
 
 ```bash
 Usage:
-    $ node index.js
+  $ screenshot-maker
 
-  Options
-    --scale (default: 1)
-    --font-size The font size (default: 80)
-    --width Final width of the screenshot (default: 1242)
-    --height Final height of the screenshot (default: 2208)
+Options
+  --scale (default: 1)
+  --font-size The font size (default: 80)
+  --width Final width of the screenshot (default: 1242)
+  --height Final height of the screenshot (default: 2208)
+  --rotate Phone rotation in radians (float value) (default: 0.03)
+  --line-height Text line height in pixels (default: 80)
+  --font-family Font Family (default: Open Sans)
+  --background-color Solid color or gradient (default: #fff...#ddd)
+  --text-color Caption text color (default: #222)
 ```
 
 ## License
